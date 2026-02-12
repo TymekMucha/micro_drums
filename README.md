@@ -1,0 +1,1 @@
+Work in progress project focussing on building a custom electronic drum trigger that sends a MIDI signal to any connected sampler via USB.
