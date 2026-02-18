@@ -10,8 +10,8 @@
 
 #define PIEZO_ADC_CHANNEL 0
 #define PIEZO_GPIO 26
-#define THRESHOLD 1600
-#define RETRIGGER_MS 90
+#define THRESHOLD 1000
+#define RETRIGGER_MS 70
 
 #define LED_PIN 15
 
@@ -31,26 +31,41 @@ bool debounce_button() {
     return false;
 }
 
-uint8_t read_piezo(){
+uint8_t read_piezo() {
     static uint32_t last_hit_time = 0;
-    uint16_t value = adc_read();
+    static uint16_t peak_val = 0;
+    static bool hit_active = false;
 
-    if(value < THRESHOLD) {
+    uint16_t value = adc_read();
+    uint32_t now = to_ms_since_boot(get_absolute_time());
+
+    // Ignore retriggers too soon
+    if ((now - last_hit_time) < RETRIGGER_MS) {
+        return 0;
+    }
+    // Detect hit start
+    if (!hit_active) {
+        if (value >= THRESHOLD) {
+            hit_active = true;
+            peak_val = value;
+        }
+        return 0;
+    }
+    // Track peak while rising
+    if (value > peak_val) {
+        peak_val = value;
         return 0;
     }
 
-    uint32_t now = to_ms_since_boot(get_absolute_time());
-    if((now - last_hit_time) < RETRIGGER_MS) return 0;
+    uint8_t velocity = peak_val / 32;
 
+    peak_val = 0;
+    hit_active = false;
     last_hit_time = now;
 
-    uint32_t clamped = value - THRESHOLD;
-    uint32_t range   = 4095 - THRESHOLD;
-    uint8_t velocity = (uint8_t)(1 + (clamped * 126) / range) + 90;
-
-    //return velocity;
-    return MIDI_VELOCITY;
+    return velocity;
 }
+
 
 void send_midi_note_on(uint8_t channel, uint8_t note, uint8_t velocity) {
     // TinyUSB sends MIDI in 4-byte USB-MIDI packets
