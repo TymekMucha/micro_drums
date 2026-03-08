@@ -15,9 +15,6 @@ A homemade custom electronic drum kit trigger that send a MIDI signal to any con
 
 ## v0.1 — Project Start
 
-![v0.1]
-**Date:** 2026.03.08
-
 <img width="2048" height="1536" alt="image" src="https://github.com/user-attachments/assets/21a78068-1225-4eae-8c0f-fbdcbaceaecc" />
 
 
