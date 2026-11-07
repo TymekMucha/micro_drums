@@ -35,7 +35,18 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(micro_drums micro_drums.cpp usb_descriptors.c )
+add_executable(micro_drums
+    src/main.cpp
+    src/Trigger.cpp
+    src/Midi_out.cpp
+    src/usb_descriptors.c 
+    src/ssd1306/ssd1306.c
+    src/Display.cpp
+    src/TriggerSettingsStore.cpp
+    src/Button.cpp
+    src/TriggerSetting.cpp
+    src/MenuController.cpp
+    )
 
 pico_set_program_name(micro_drums "micro_drums")
 pico_set_program_version(micro_drums "0.1")
@@ -51,6 +62,7 @@ target_link_libraries(micro_drums
         hardware_pwm
         tinyusb_device
         tinyusb_board
+        hardware_i2c
 )
 
 # Add the standard include files to the build

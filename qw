@@ -1,0 +1,37 @@
+[33mcommit 09fc65e8db0068a064f18f2b6c5fae76cadd4be0[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: TymekMucha <115454910+TymekMucha@users.noreply.github.com>
+Date:   Sun Mar 8 13:46:59 2026 +0100
+
+    Update README.md
+    
+    Removed version details for v0.1 from README.
+
+[33mcommit 53d313e13af44d79fc66a5eb2f54e17901b432db[m
+Author: TymekMucha <115454910+TymekMucha@users.noreply.github.com>
+Date:   Sun Mar 8 13:46:16 2026 +0100
+
+    Revise README with project details
+
+[33mcommit 8541185c866bc6d953fbb08c5c229fe93a7cc3d6[m
+Author: TymekMucha <115454910+TymekMucha@users.noreply.github.com>
+Date:   Sun Mar 8 13:26:08 2026 +0100
+
+    added support for multiple channels
+
+[33mcommit 0563173a146e0618bd6458194021e2d66221a918[m
+Author: TymekMucha <115454910+TymekMucha@users.noreply.github.com>
+Date:   Wed Feb 18 14:42:40 2026 +0100
+
+    Fixed velocity calculation, needs fine tuning
+
+[33mcommit 9e1e6b138605e336d471e96733e428b9d5466c56[m
+Author: TymekMucha <115454910+TymekMucha@users.noreply.github.com>
+Date:   Thu Feb 12 11:28:52 2026 +0100
+
+    initial commit
+
+[33mcommit fa1d156214d8f0eeca2e549896fdc2c829134e16[m
+Author: TymekMucha <115454910+TymekMucha@users.noreply.github.com>
+Date:   Thu Feb 12 11:25:47 2026 +0100
+
+    first commit
