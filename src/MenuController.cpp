@@ -102,7 +102,7 @@ void MenuContoller::OnPlusButtonClick()
 {
     if (m_currentlySelectedSetting == cfg::SettingsAmount)
     {
-        if (m_currentlySelectedPad++ >= cfg::NumPads)
+        if (m_currentlySelectedPad++ >= cfg::NumPads - 1)
         {
             m_currentlySelectedPad = 0;
         }

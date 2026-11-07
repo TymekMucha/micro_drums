@@ -2,11 +2,11 @@
 
 TriggerSettingsStore::TriggerSettingsStore()
 {
-    for(auto& arr : m_settingsOfAllPads)
+    for(int i = 0; i < cfg::NumPads; i++)
     {
-        for(int j = 0; j < arr.size(); j++)
+        for(int j = 0; j < cfg::SettingsAmount; j++)
         {
-            arr.at(j) = TriggerSetting(cfg::SettingsDefaults[j], cfg::SettingStrings[j]);
+            m_settingsOfAllPads.at(i).at(j) = TriggerSetting(cfg::SettingsDefaults[i][j], cfg::SettingStrings[j]);
         }
     }
 }

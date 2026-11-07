@@ -63,7 +63,7 @@ void Trigger::scan() {
         }
 
         if ((now - windowStartMs) >= readSetting(cfg::SettingEnum::PEAK_WINDOW_MS)) {
-            midi::noteOn(cfg::MidiChannel, m_midiNote, toVelocity(peakVal));
+            midi::noteOn(cfg::MidiChannel, m_midiNote, toVelocity(peakVal) + readSetting(cfg::SettingEnum::VEL_OFFSET));
             lastFiredPeak = peakVal;
             noteFiredMs   = now;
             state         = State::NoteFired;

@@ -34,26 +34,50 @@ constexpr uint8_t OledSdaGpio = 14;
 
 // ---- SETTINGS ----
 
-constexpr int SettingsAmount = 7;
+constexpr int SettingsAmount = 8;
 constexpr std::string_view SettingStrings[SettingsAmount] = 
 {
     "threshold",            // ADC counts needed to start tracking a hit 
     "peakWindowMs",         // "scan time": how long to look for the peak
     "decayMs",              // time before note-off / back to idle       
-    "retriggerMs",          // minimum time before a retrigger is allowed
-    "retrigger%",    // new hit must reach this % of last peak    
+    "retrig_Ms",            // minimum time before a retrigger is allowed
+    "retrig_%",             // new hit must reach this % of last peak    
     "velAdcMin",            // ADC value mapped to velocity 1            
-    "velAdcMax",            // ADC value mapped to velocity 127          
+    "velAdcMax",            // ADC value mapped to velocity 127       
+    "velOffset"             // value by how much the velocity is shifted
 };
-constexpr int SettingsDefaults[SettingsAmount] =
+constexpr int SettingsDefaults[NumPads][SettingsAmount] =
 {
-    300,
-    7,
-    100,
-    15,
-    60,
-    300,
-    4000
+    { // kick
+        300,
+        7,
+        100,
+        15,
+        60,
+        300,
+        4000,
+        29
+    },
+    { // snare
+        300,
+        7,
+        100,
+        7,
+        40,
+        300,
+        4000,
+        0
+    },
+    { // hh
+        150,
+        7,
+        100,
+        15,
+        35,
+        300,
+        4000,
+        30
+    }
 };
 
 enum SettingEnum{
@@ -63,7 +87,8 @@ enum SettingEnum{
     RETRIGGER_MS,
     RETRIGGER_RATIO_PROC,
     VEL_ADC_MIN,
-    VEL_ADC_MAX
+    VEL_ADC_MAX,
+    VEL_OFFSET
 };
 
 constexpr const char* PadNames[NumPads] =
